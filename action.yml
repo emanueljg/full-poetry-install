@@ -1,0 +1,59 @@
+name: 'Full Poetry install'
+description: 'Does a full Poetry install with sensible defaults'
+inputs:
+
+  python:
+    description: |
+      What python version to install.
+
+      Example: '3.11'.
+
+      Set to null to not install python.
+    required: true
+
+  self-cache: 
+    description: |
+      String that identifies the cache of Poetry's own install.
+
+      Type: str or null
+
+      Manually set a value (e.g. 'poetry-0') to identify the
+      cache of the current poetry install
+      and then change it when you want to invalidate the cache. 
+
+      Set to null to disable cache.
+      Defaults to null (don't cache).
+    required: false
+    default: null
+
+  venv-cache:
+    description: |
+      Whether to cache poetry venv or not.
+
+      Type: bool 
+
+      Defaults to true.
+    required: false
+    default: true
+
+# outputs:
+#   random-number:
+#     description: "Random number"
+#     value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Running composite"
+    - run: echo ${{ inputs }}
+
+    
+  # steps:
+  #   - run: echo Hello ${{ inputs.who-to-greet }}.
+  #     shell: bash
+  #   - id: random-number-generator
+  #     run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+  #     shell: bash
+  #   - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+  #     shell: bash
+  #   - run: goodbye.sh
+  #     shell: bash
