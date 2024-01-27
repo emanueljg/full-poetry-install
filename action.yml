@@ -44,7 +44,10 @@ runs:
   using: "composite"
   steps:
     - run: echo "Running composite"
+      shell: bash
     - run: echo ${{ inputs }}
+      shell: bash
+    
 
     
   # steps:
