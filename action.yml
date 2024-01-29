@@ -78,26 +78,6 @@ runs:
       run: poetry install --no-interaction --no-root
       shell: bash
 
-
-
-    - run: echo "Running composite"
+    - name: Install project
+      run: poetry install --no-interaction
       shell: bash
-    - run: echo ${{ inputs.python }}
-      shell: bash
-    - run: echo ${{ inputs.self-cache }}
-      shell: bash
-    - run: echo ${{ inputs.venv-cache }}
-      shell: bash
-    
-
-    
-  # steps:
-  #   - run: echo Hello ${{ inputs.who-to-greet }}.
-  #     shell: bash
-  #   - id: random-number-generator
-  #     run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-  #     shell: bash
-  #   - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-  #     shell: bash
-  #   - run: goodbye.sh
-  #     shell: bash
