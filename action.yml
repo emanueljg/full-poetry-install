@@ -36,15 +36,11 @@ inputs:
     required: false
     default: true
 
-# outputs:
-#   random-number:
-#     description: "Random number"
-#     value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
   steps:  
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up python
       id: setup-python
@@ -55,7 +51,7 @@ runs:
     - name: Load cached Poetry installation
       if: inputs.self-cache != null
       id: cached-poetry
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.local  # the path depends on the OS
         key: ${{ inputs.self-cache }}  # increment to reset cache
@@ -71,7 +67,7 @@ runs:
     - name: Load cached venv
       id: cached-poetry-dependencies
       if: inputs.venv-cache == 'true'
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: .venv
         key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
