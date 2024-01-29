@@ -45,7 +45,11 @@ runs:
   steps:
     - run: echo "Running composite"
       shell: bash
-    - run: echo ${{ inputs }}
+    - run: echo ${{ inputs.python }}
+      shell: bash
+    - run: echo ${{ inputs.self-cache }}
+      shell: bash
+    - run: echo ${{ inputs.venv-cache }}
       shell: bash
     
 
