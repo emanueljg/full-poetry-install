@@ -42,7 +42,30 @@ inputs:
 #     value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
-  steps:
+  steps:  
+
+    - uses: actions/checkout@v3
+
+    - name: Set up python
+      id: setup-python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Load cached Poetry installation
+      if: inputs.self-cache != null
+      id: cached-poetry
+      uses: actions/cache@v3
+      with:
+        path: ~/.local  # the path depends on the OS
+        key: ${{ inputs.self-cache }}  # increment to reset cache
+
+    - name: Install Poetry
+      if: steps.cached-poetry.outputs.cache-hit != 'true'
+      uses: snok/install-poetry@v1
+
+
+
     - run: echo "Running composite"
       shell: bash
     - run: echo ${{ inputs.python }}
