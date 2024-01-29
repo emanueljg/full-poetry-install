@@ -8,7 +8,7 @@ Wrapper around [setup-python](https://github.com/actions/setup-python) and [inst
 ## Usage
 ```yml
 - name: Full Poetry install
-  uses: emanueljg/full-poetry-install@master
+  uses: emanueljg/full-poetry-install@v1
   with:
     python: '3.11'
     self-cache: 'poetry-0'  # if set to str, cache poetry with this key.
